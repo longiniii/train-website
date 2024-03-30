@@ -13,8 +13,11 @@
             <option value="">Batumi</option>
             <option value="">Poti</option>
         </select>
-        <input type="date">
-        <input type="text" placeholder="Number of passenger">
-        <button></button>
+        <div class="custom-date-input-div">
+            <p #dateOfDeparture id="date-of-departure">Date of departure</p>
+            <input #date (input)="dateChange(dateOfDeparture, date)" type="date">
+        </div>
+        <input type="text" placeholder="Number of passengers">
+        <button>book a train</button>
     </form>
 </section>

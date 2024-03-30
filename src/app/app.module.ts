@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeHeadingComponent } from './home/home-heading/home-heading.component';
 import { TrainReservationFormComponent } from './home/home-heading/train-reservation-form/train-reservation-form.component';
+import { AboutTrainComponent } from './home/about-train/about-train.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TrainReservationFormComponent } from './home/home-heading/train-reserva
     HomeComponent,
     FooterComponent,
     HomeHeadingComponent,
-    TrainReservationFormComponent
+    TrainReservationFormComponent,
+    AboutTrainComponent
   ],
   imports: [
     BrowserModule,
