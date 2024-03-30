@@ -1,0 +1,20 @@
+footer {
+    background-color: rgb(238, 240, 255);
+    height: 220px;
+    position: relative;
+    div {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%,0);
+        height: 90px;
+        width: 88%;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        border-top: 1px solid rgb(255, 239, 239);
+        a {
+            color: rgb(0, 0, 237);
+        }
+    }
+}

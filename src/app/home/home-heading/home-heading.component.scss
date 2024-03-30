@@ -1,0 +1,15 @@
+section {
+    height: 370px;
+    background-image: linear-gradient(to right, #D7E6F6, white);
+    position: relative;
+    div {
+        position: absolute;
+        height: 100px;
+        top: 60px;
+        left: 110px;
+        h1 {
+            letter-spacing: 1px;
+            padding-bottom: 8px;
+        }
+    }
+}
