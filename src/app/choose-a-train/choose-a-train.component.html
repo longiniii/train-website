@@ -1,0 +1,30 @@
+<h1>List of trains</h1>
+<table>
+        <thead>
+        <tr>
+            <th>Name of the train</th>
+            <th>Departure</th>
+            <th>Arrive</th>
+            <th>Book</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of departureData?.trains">
+            <td class="route">
+                <p class="time">#{{item.number}}</p>
+                <p>{{item.name}}</p>
+            </td>
+            <td class="departure">
+                <p class="time">{{item.departure}}</p>
+                <p>{{item.from}}</p>
+            </td>
+            <td class="arrival">
+                <p class="time">{{item.arrive}}</p>
+                <p>{{item.to}}</p>
+            </td>
+            <td class="book">
+                <button>Book</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

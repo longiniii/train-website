@@ -1,16 +1,16 @@
 nav {
     height: 110px;
-    background-image: linear-gradient(to right, #D7E6F6, white);
     display: flex;
     flex-flow: row wrap;
     z-index: 999;
     position: sticky;
     left: 0;
     top: 0;
+    background-color: white;
     #title-div {
         flex: 1;
         #title {
-            margin-left: 90px;
+            margin-left: 7rem;
             margin-top: 35px;
             color: rgb(63, 63, 63);
             font-weight: 600;
@@ -20,7 +20,7 @@ nav {
     }
     #check-ticket-status-div {
         #check-ticket-status-button {
-            margin-right: 90px;
+            margin-right: 7rem;
             margin-top: 35px;
             background-color: rgb(40, 64, 191);
             color: white;
@@ -34,5 +34,10 @@ nav {
                 background-color: rgb(65, 95, 226);
             }
         }
+    }
+}
+@media print {
+    nav {
+        display: none;
     }
 }

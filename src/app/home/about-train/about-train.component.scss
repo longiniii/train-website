@@ -1,6 +1,6 @@
 section {
     background-color: white;
-    height: 700px;
+    height: 750px;
     display: flex;
     flex-flow: row wrap;
     img {
@@ -15,11 +15,44 @@ section {
         #information {
             margin-top: 15rem;
             margin-left: 10rem;
-            height: 300px;
+            height: 220px;
             width: 35rem;
-            background-color: red;
-            h2 {
-                font-size: 1.6rem;
+            display: flex;
+            flex-flow: column wrap;
+            #main-info {
+                flex: 1;
+                h2 {
+                    font-size: 1.6rem;
+                    padding-bottom: 0.5rem;
+                }
+                p {
+                    width: 90%;
+                }
+            }
+            #sub-infoes {
+                flex: 1;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                div {
+                    flex: 1;
+                    position: relative;
+                    img {
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translate(0,-50%);
+                        height: 41px;
+                    }
+                    p {
+                        position: absolute;
+                        left: 2.3rem;
+                        top: 50%;
+                        transform: translate(0,-50%);
+                        padding-left: 0.5rem;
+                        font-size: 1rem;
+                    }
+                }
             }
         }
         

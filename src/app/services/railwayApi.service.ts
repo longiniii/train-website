@@ -25,8 +25,8 @@ export class TrainServiceService {
   getDepartures = () => {
     return this.trainHttp.get('https://railway.stepprojects.ge/api/departures')
   }
-  getDeparture = () => {
-    // going to add it in future
+  getDeparture = (from:string,to:string,date:string) => {
+    return this.trainHttp.get(`https://railway.stepprojects.ge/api/getdeparture?from=${from}&to=${to}&date=${date}`)
   }
   getTickets = () => {
     return this.trainHttp.get('https://railway.stepprojects.ge/api/tickets')
@@ -41,12 +41,12 @@ export class TrainServiceService {
     return this.trainHttp.get(`https://railway.stepprojects.ge/api/tickets/confirm/${id}`)
   }
   deleteTicket = (id:string) => {
-    return this.trainHttp.get(`https://railway.stepprojects.ge/api/tickets/cancel/${id}`)
+    return this.trainHttp.delete(`https://railway.stepprojects.ge/api/tickets/cancel/${id}`, {responseType: 'text'})
   }
   getSeat = (id:string) => {
     return this.trainHttp.get(`https://railway.stepprojects.ge/api/seat/${id}`)
   }
   deleteAllTickets = () => {
-    return this.trainHttp.get('https://railway.stepprojects.ge/api/tickets/cancelAll')
+    return this.trainHttp.delete('https://railway.stepprojects.ge/api/tickets/cancelAll')
   }
 }

@@ -1,0 +1,54 @@
+<section id="check-ticket-section">
+    <div id="title">
+        <p>Enter ticket id</p>
+    </div>
+    <div id="check-ticket-div">
+        <input #ticketID type="text">
+        <button (click)="checkTicketStatus(ticketID)">Check</button>
+    </div>
+    <div id="ticket-not-found" *ngIf="ticketNotFound">
+        <p>Ticket has not been found, please verify the ticket number.</p>
+    </div>
+</section>
+
+<app-ticket-document *ngIf="ticketNotFound == false" [ticketData]="ticketData" [ticketIsPaidFor]="ticketIsPaidFor"></app-ticket-document>
+
+<!-- {
+    "id": "42aa0b5f-6410-4306-8a2d-55ba6ee14a3c",
+    "phone": null,
+    "email": null,
+    "date": "ხუთშაბათი 4 აპრილი",
+    "ticketPrice": 75,
+    "trainID": 10,
+    "confirmed": false,
+    "train": {
+        "id": 10,
+        "number": 812,
+        "name": "თბილისი-ბათუმი",
+        "date": "ხუთშაბათი",
+        "from": "თბილისი",
+        "to": "ბათუმი",
+        "departure": "00:35",
+        "arrive": "05:47",
+        "departureId": 4,
+        "vagons": null
+    },
+    "persons": [
+        {
+            "id": 194,
+            "ticketId": "42aa0b5f-6410-4306-8a2d-55ba6ee14a3c",
+            "seat": {
+                "seatId": "ff1c9515-b2f6-42c8-90b1-869bf68f6b86",
+                "number": "4B",
+                "price": 75,
+                "isOccupied": true,
+                "vagonId": 28
+            },
+            "name": null,
+            "surname": null,
+            "idNumber": null,
+            "status": null,
+            "payoutCompleted": true
+        }
+    ]
+} -->

@@ -1,0 +1,214 @@
+
+#about-ticket-and-the-document {
+    margin-top: 50px;
+    margin-left: 7rem;
+    margin-right: 5rem;
+    margin-bottom: 2rem;
+    width: 70rem;
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+    #is-paid-for {
+        padding-top: 24px;
+        margin-bottom: 26px;
+        p {
+            margin-top: 0.7rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    }
+    #is-paid-for-icon {
+        margin: auto;
+        height: 65px;
+        width: 65px;
+        border-radius: 50%;
+        position: relative;
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            font-size: 1.35rem;
+        }
+    }
+    #about-ticket {
+        background-color: rgb(246, 246, 255);
+        height: 1100px;
+        width: 94%;
+        margin: auto;
+        position: relative;
+        #about-ticket-document {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%,0);
+            min-height: 860px;
+            width: 750px;
+            background-color: white;
+            padding: 30px;
+            h4 {
+                padding-top: 18px;
+                display: inline-block;
+            }
+            img {
+                position: absolute;
+                right: 30px;
+                height: 75px;
+                width: 60px;
+                object-fit: cover;
+            }
+            #ticket-id {
+                margin-top: 55px;
+                span {
+                    font-weight: bold;
+                }
+            }
+            .table {
+                min-height: 40px;
+                margin-top: 35px;
+                border-radius: 8px;
+                border: 2px solid rgb(236, 238, 244);
+                display: flex;
+                flex-flow: row wrap;
+                div {
+                    flex: 1;
+                    padding: 16px;
+                    p {
+                        font-size: 17px;
+                    }
+                    .info {
+                        padding-top: 6px;
+                        font-weight: bold;
+                    }
+                }
+            }
+            #contact-information {
+                margin-top: 38px;
+                font-weight: bold;
+            }
+            #passengers-information {
+                margin-top: 38px;
+                margin-bottom: 30px;
+            }
+            #passengers {
+                height: 160px;
+                overflow-y: scroll;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                &::-webkit-scrollbar {
+                    width: 0;
+                    height: 0;
+                }
+                #passenger {
+                    min-height: 40px;
+                    margin-top: 6px;
+                    border-radius: 8px;
+                    border: 2px solid rgb(236, 238, 244);
+                    display: flex;
+                    flex-flow: row wrap;
+                    div {
+                        flex: 1;
+                        padding: 16px;
+                        p {
+                            font-size: 17px;
+                            display: inline-block;
+                            padding-right: 10px;
+                        }
+                        .info {
+                            padding-top: 6px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+            #line {
+                margin-top: 40px;
+                height: 1.5px;
+                width: 100%;
+                background-color: black;
+            }
+            #total-price-text {
+                margin-top: 20px;
+                margin-left: 400px;
+                font-weight: bold;
+                display: inline-block;
+            }
+            #total-price {
+                display: inline-block;
+                margin-left: 150px;
+            }
+            #the-invoice-info {
+                margin-top: 30px;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+            #download-the-ticket {
+                margin-top: 4px;
+                text-align: center;
+                font-size: 0.9rem;
+                color: red;
+            }
+        }
+        #print-button {
+            position: absolute;
+            top: 10%;
+            left: 82.5%;
+            background-color: white;
+            color: rgb(65, 95, 226);
+            font-size: 1rem;
+            width: 2.6rem;
+            height: 45px;
+            border: none;
+            &:hover {
+                transition-duration: 0.5s;
+                color: rgb(40, 64, 191);
+            }
+        }
+        #delete-button {
+            position: absolute;
+            bottom: 35px;
+            left: 35px;
+            background-color: red;
+            color: white;
+            font-size: large;
+            width: 11.6rem;
+            height: 48px;
+            border-radius: 6px;
+            border: none;
+            &:hover {
+                transition-duration: 0.3s;
+                background-color: rgb(65, 95, 226);
+            }
+        }
+    }
+}
+
+
+@media print {
+    #about-ticket-and-the-document {
+        width: 80%; // dont delete this otherwise the print will be messed up
+        height: 940px !important;
+        background-color: blue I !important;
+        >button {
+        display: none;
+        }
+        #is-paid-for {
+            display: none;
+        }
+        #about-ticket {
+            background-color: white !important;
+            height: 850px !important;
+            #about-ticket-document {
+                top: 0 !important;
+                width: 100% !important;
+                height: 850px !important;
+            }
+            #print-button {
+                display: none;
+            }
+            #delete-button {
+                display: none;
+            }
+        }
+    }
+}

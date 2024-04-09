@@ -1,23 +1,29 @@
 <section>
     <p>reserve a train ticket</p>
-    <form>
-        <select  name="" id="">
-            <option [defaultSelected]="true" value="">From</option>
-            <option value="">Tbilisi</option>
-            <option value="">Batumi</option>
-            <option value="">Poti</option>
-        </select>
-        <select name="" id="">
-            <option [defaultSelected]="true" value="">To</option>
-            <option value="">Tbilisi</option>
-            <option value="">Batumi</option>
-            <option value="">Poti</option>
-        </select>
+    <form [formGroup]="reservationForm">
+        <div class="custom-select">
+            <p><i #customSelectArrow1 class="fa-solid fa-chevron-up"></i></p>
+            <select #from formControlName="from" name="" id="" (click)="onSelectClick(customSelectArrow1,1)">
+                <option [defaultSelected]="true" value="">From</option>
+                <option value="თბილისი">Tbilisi</option>
+                <option value="ბათუმი">Batumi</option>
+                <option value="ფოთი">Poti</option>
+            </select>
+        </div>
+        <div class="custom-select">
+            <p><i #customSelectArrow2 class="fa-solid fa-chevron-up"></i></p>
+            <select #to formControlName="to" name="" id="" (click)="onSelectClick(customSelectArrow2,2)">
+                <option [defaultSelected]="true" value="">To</option>
+                <option value="თბილისი">Tbilisi</option>
+                <option value="ბათუმი">Batumi</option>
+                <option value="ფოთი">Poti</option>
+            </select>
+        </div>
         <div class="custom-date-input-div">
             <p #dateOfDeparture id="date-of-departure">Date of departure</p>
-            <input #date (input)="dateChange(dateOfDeparture, date)" type="date">
+            <input #date formControlName="date" (input)="dateChange(dateOfDeparture, date)" type="date">
         </div>
-        <input type="text" placeholder="Number of passengers">
-        <button>book a train</button>
+        <input #numberOfPassengers formControlName="numberOfPassengers" id="number-of-passengers" type="text" placeholder="Number of passengers">
+        <button routerLink="/reservation/choose-a-train/{{from.value}}/{{to.value}}/{{date.value}}/{{numberOfPassengers.value}}" [disabled]="reservationForm.status == 'INVALID'" type="button">book a train</button>
     </form>
 </section>

@@ -1,0 +1,63 @@
+h1 {
+    margin-top: 40px;
+    text-align: center;
+}
+table {
+    margin: auto;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    width: 73rem;
+    background-color: white;
+    border-collapse: collapse;
+    thead {
+        border: 1px solid rgb(213, 218, 240);
+        tr {
+            height: 60px;
+            th {
+                text-align: start;
+                padding-left: 1rem;
+                font-weight: 600;
+            }
+        }
+    }
+    tbody {
+        tr {
+            background-color: rgb(244, 245, 251);
+            border-bottom: 40px solid white; 
+            // could not find any other way to create a gap
+            // between table rows
+            td {
+                box-sizing: content-box !important;
+                text-align: start;
+                padding-left: 1rem;
+                height: 100px;
+                font-size: 0.85rem;
+                p {
+                    padding-bottom: 10px;
+                }
+                .time {
+                    font-weight: 600;
+                }
+                button {
+                    background-color: rgb(40, 64, 191);
+                    color: white;
+                    font-size: 0.95rem;
+                    width: 6rem;
+                    height: 40px;
+                    border-radius: 6px;
+                    border: none;
+                    &:hover {
+                        transition-duration: 0.3s;
+                        background-color: rgb(65, 95, 226);
+                    }
+                }
+            }
+            .book {
+                width: 20%;
+            }
+            .route {
+                width: 28%;
+            }
+        }
+    }
+}
