@@ -1,1 +1,124 @@
-<p>passenger-information works!</p>
+<section id="enter-information-section">
+    <h3>Enter passenger information</h3>
+    <div id="passenger-data">
+        <div>
+            <p class="first-paragraph">#{{trainData.number}}</p>
+            <p class="second-paragraph">{{trainData.name}}</p>
+        </div>
+        <div>
+            <p class="first-paragraph">{{trainData.departure}}</p>
+            <p class="second-paragraph">{{trainData.from}}</p>
+        </div>
+        <div>
+            <p class="first-paragraph">{{trainData.arrive}}</p>
+            <p class="second-paragraph">{{trainData.to}}</p>
+        </div>
+    </div>
+    <div class="line"></div>
+    <h2 id="contact">Contact</h2>
+    <form id="contact-form">
+        <input placeholder="Email" type="text">
+        <input placeholder="Phone number" type="text">
+    </form>
+    <h2 id="about-passengers">About passenger</h2>
+    <div id="passengers">
+        <div class="passenger" *ngFor="let item of arrayOfPassengers, let i = index">
+            <h3>passenger {{i+1}}</h3>
+            <div class="put-info">
+                <button>Seat: 3b</button>
+                <input placeholder="First name" type="text">
+                <input placeholder="Last name" type="text">
+                <input placeholder="SSN" type="text">
+                <button (click)="onChoosingSeats()">Pick a seat</button>
+            </div>
+        </div>
+    </div>
+    <div id="about-train">
+        <!-- get info from an object -->
+        <div id="each-info" *ngFor="let item of trainInfoArrayOfObjects">
+            <div class="image-main-div">
+                <div class="image-div">
+                    <img [src]="item.image" alt="">
+                </div>
+            </div>
+            <div class="info-div">
+                <h4>{{item.name}}</h4>
+                <p class="item-description">{{item.description}}</p>
+                <p *ngIf="item.included" class="included"><i class="fa-regular fa-square-check"></i> Included</p>
+                <p *ngIf="!item.included" class="included"><i class="fa-regular fa-circle-xmark"></i> Not included</p>
+            </div>
+        </div>
+    </div>
+    <div class="line"></div>
+</section>
+<div *ngIf="choosingSeats" id="background-for-choosing-a-seat">
+    <div id="choose-a-seat-and-a-wagon">
+        <div id="choose-a-seat-main-div">
+            <div id="colors">
+                <div>
+                    <div id="avaliable"></div>
+                    <p>Avaliable</p>
+                </div>
+                <div>
+                    <div id="selected"></div>
+                    <p>Selected</p>
+                </div>
+                <div>
+                    <div id="unavaliable"></div>
+                    <p>Unavaliable</p>
+                </div>
+            </div>
+            <div id="choose-a-seat-div">
+                <div id="the-vagon">
+                    <div>
+                        <button></button>
+                    </div>
+                    <div>
+                        <button></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="choose-a-wagon-div">
+            <div id="rails"></div>
+            <button #chooseASeat (click)="onChoosingSeats()" *ngFor="let item of trainData.vagons">{{item.name}}</button>
+        </div>
+        <div id="close-the-window">
+            <p (click)="closeTheChoosingSeats()"><i class="fa-sharp fa-solid fa-xmark"></i></p>
+        </div>
+    </div>
+</div>
+<!-- {
+    "id": 28,
+    "number": 812,
+    "name": "ბათუმი-თბილისი",
+    "date": "ოთხშაბათი",
+    "from": "ბათუმი",
+    "to": "თბილისი",
+    "departure": "00:35",
+    "arrive": "05:47",
+    "departureId": 10,
+    "vagons": [
+        {
+            "id": 82,
+            "trainId": 28,
+            "trainNumber": 812,
+            "name": "II კლასი",
+            "seats": null
+        },
+        {
+            "id": 83,
+            "trainId": 28,
+            "trainNumber": 812,
+            "name": "I კლასი",
+            "seats": null
+        },
+        {
+            "id": 84,
+            "trainId": 28,
+            "trainNumber": 812,
+            "name": "ბიზნესი",
+            "seats": null
+        }
+    ]
+} -->

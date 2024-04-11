@@ -18,7 +18,12 @@ export class TrainReservationFormComponent implements OnInit{
   ngOnInit(): void {
     // declare the form
     this.declareReservationForm()
+    console.log(this.datePickerMax)
   }
+
+  // get values for date input
+  datePickerMin = new Date().toISOString().split("T")[0];
+  datePickerMax = new Date(new Date().setDate(new Date().getDate() + 6)).toISOString().split("T")[0]
 
   // for custom input
   public dateChange = (dateParagraph:HTMLParagraphElement, date:HTMLInputElement) => {

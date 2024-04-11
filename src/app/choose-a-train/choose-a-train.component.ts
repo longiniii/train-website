@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TrainServiceService } from '../services/railwayApi.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-choose-a-train',
@@ -11,11 +11,13 @@ export class ChooseATrainComponent implements OnInit {
   constructor (
     private railwayApi: TrainServiceService,
     public activatedRoute: ActivatedRoute,
+    public router: Router
     ) { }
-
+    
     from:any;
     to:any;
     date:any;
+    numberOfPassengers:any;
   ngOnInit(): void {
     // assign activatedRoute values to variables
     this.assignActivatedRouteValues()
@@ -28,6 +30,7 @@ export class ChooseATrainComponent implements OnInit {
       this.from = data.get('from')
       this.to = data.get('to')
       this.date = data.get('date')
+      this.numberOfPassengers = data.get('numberOfPassengers')
     })
   }
 
@@ -38,6 +41,7 @@ export class ChooseATrainComponent implements OnInit {
     this.railwayApi.getDeparture(this.from, this.to, this.date)
     .subscribe({
       next: (data:any) => {
+        console.log(data)
         this.departureData = data[0]
       },
       error: (error) => {
@@ -47,4 +51,6 @@ export class ChooseATrainComponent implements OnInit {
   })
   }
 
+
+  // change route
 }

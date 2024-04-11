@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ChooseATrainComponent } from './choose-a-train/choose-a-train.component';
 import { CheckTicketStatusComponent } from './check-ticket-status/check-ticket-status.component';
+import { PassengerInformationComponent } from './passenger-information/passenger-information.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'home', redirectTo: ''},
   {path: 'reservation/choose-a-train/:from/:to/:date/:numberOfPassengers', component:ChooseATrainComponent},
+  {path: 'passenger-information/:numberOfPassengers/:trainId', component:PassengerInformationComponent},
   {path: 'check-ticket-status', component:CheckTicketStatusComponent}
 
 ];
