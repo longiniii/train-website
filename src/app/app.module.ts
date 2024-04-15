@@ -15,6 +15,7 @@ import { ChooseATrainComponent } from './choose-a-train/choose-a-train.component
 import { PassengerInformationComponent } from './passenger-information/passenger-information.component';
 import { CheckTicketStatusComponent } from './check-ticket-status/check-ticket-status.component';
 import { TicketDocumentComponent } from './ticket-document/ticket-document.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TicketDocumentComponent } from './ticket-document/ticket-document.compo
     ChooseATrainComponent,
     PassengerInformationComponent,
     CheckTicketStatusComponent,
-    TicketDocumentComponent
+    TicketDocumentComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

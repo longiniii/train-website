@@ -1,12 +1,10 @@
-import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { ElementRef, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShareDataBetweenComponentsService {
-
   constructor() { }
-
-  public trainReservationForm!:FormGroup;
+  navigation!: ElementRef;
+  footer!: ElementRef;
 }

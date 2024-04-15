@@ -1,0 +1,45 @@
+section {
+    position: relative;
+    >div {
+        position: absolute;
+        top: 90px;
+        left: 28rem;
+        width: 30rem;
+        display: flex;
+        flex-flow: row wrap;
+        img {
+            min-height: 0;
+            min-width: 0;
+            height: 120px !important;
+            width: 128px  !important;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+        >div {
+            flex: 1;
+            position: relative;
+            h2 {
+                margin-bottom: 10px;
+            }
+            p {
+                font-size: 1.1rem;
+            }
+            button {
+                position: absolute;
+                bottom: 4px;
+                right: 2rem;
+                background-color: black;
+                color: white;
+                font-size: medium;
+                width: 7rem;
+                height: 36px;
+                border-radius: 6px;
+                border: none;
+                &:hover {
+                    transition-duration: 0.3s;
+                    background-color: rgb(65, 95, 226);
+                }
+            }
+        }
+    }
+}

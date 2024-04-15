@@ -1,7 +1,7 @@
 <section id="enter-information-section">
     <h3>Enter passenger information</h3>
     <div id="passenger-data">
-        <div>
+        <div> 
             <p class="first-paragraph">#{{trainData.number}}</p>
             <p class="second-paragraph">{{trainData.name}}</p>
         </div>
@@ -70,18 +70,13 @@
             </div>
             <div id="choose-a-seat-div">
                 <div id="the-vagon">
-                    <div>
-                        <button></button>
-                    </div>
-                    <div>
-                        <button></button>
-                    </div>
+                    <button *ngFor="let item of currentlyChosenWagon.seats" [ngClass]="[item.isOccupied ? 'is-occupied' : 'is-not-occupied']">{{item.number}}</button>
                 </div>
             </div>
         </div>
         <div id="choose-a-wagon-div">
             <div id="rails"></div>
-            <button #chooseASeat (click)="onChoosingSeats()" *ngFor="let item of trainData.vagons">{{item.name}}</button>
+            <button #chooseASeat (click)="onChoosingWagons($event)" *ngFor="let item of trainData.vagons">{{item.name}}</button>
         </div>
         <div id="close-the-window">
             <p (click)="closeTheChoosingSeats()"><i class="fa-sharp fa-solid fa-xmark"></i></p>
