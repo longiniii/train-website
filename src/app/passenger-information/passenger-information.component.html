@@ -2,16 +2,16 @@
     <h3>Enter passenger information</h3>
     <div id="passenger-data">
         <div> 
-            <p class="first-paragraph">#{{trainData.number}}</p>
-            <p class="second-paragraph">{{trainData.name}}</p>
+            <p class="first-paragraph">#{{trainData?.number}}</p>
+            <p class="second-paragraph">{{trainData?.name}}</p>
         </div>
         <div>
-            <p class="first-paragraph">{{trainData.departure}}</p>
-            <p class="second-paragraph">{{trainData.from}}</p>
+            <p class="first-paragraph">{{trainData?.departure}}</p>
+            <p class="second-paragraph">{{trainData?.from}}</p>
         </div>
         <div>
-            <p class="first-paragraph">{{trainData.arrive}}</p>
-            <p class="second-paragraph">{{trainData.to}}</p>
+            <p class="first-paragraph">{{trainData?.arrive}}</p>
+            <p class="second-paragraph">{{trainData?.to}}</p>
         </div>
     </div>
     <div class="line"></div>
@@ -25,11 +25,11 @@
         <div class="passenger" *ngFor="let item of arrayOfPassengers, let i = index">
             <h3>passenger {{i+1}}</h3>
             <div class="put-info">
-                <button>Seat: 3b</button>
+                <button>Seat: {{item.seat}}</button>
                 <input placeholder="First name" type="text">
                 <input placeholder="Last name" type="text">
                 <input placeholder="SSN" type="text">
-                <button (click)="onChoosingSeats()">Pick a seat</button>
+                <button (click)="onChoosingSeats(i)">Pick a seat</button>
             </div>
         </div>
     </div>
@@ -70,7 +70,19 @@
             </div>
             <div id="choose-a-seat-div">
                 <div id="the-vagon">
-                    <button *ngFor="let item of currentlyChosenWagon.seats" [ngClass]="[item.isOccupied ? 'is-occupied' : 'is-not-occupied']">{{item.number}}</button>
+                    <button 
+                    (click)="onChoosingASeat($event)"  
+                    *ngFor="let item of currentlyChosenWagon.seats, let i = index" 
+                    [ngClass]="
+                    [
+                        item.isOccupied ? 'is-occupied' : 'is-not-occupied',
+                        arrayOfPassengers[theCurrentPassenger].wagon == currentlyChosenWagon.name
+                        && arrayOfPassengers[theCurrentPassenger].seat == item.number
+                        ? 
+                        'is-selected' : '0'
+                    ]">
+                    {{item.number}}
+                    </button>
                 </div>
             </div>
         </div>
@@ -83,37 +95,22 @@
         </div>
     </div>
 </div>
-<!-- {
-    "id": 28,
-    "number": 812,
-    "name": "ბათუმი-თბილისი",
-    "date": "ოთხშაბათი",
-    "from": "ბათუმი",
-    "to": "თბილისი",
-    "departure": "00:35",
-    "arrive": "05:47",
-    "departureId": 10,
-    "vagons": [
-        {
-            "id": 82,
-            "trainId": 28,
-            "trainNumber": 812,
-            "name": "II კლასი",
-            "seats": null
-        },
-        {
-            "id": 83,
-            "trainId": 28,
-            "trainNumber": 812,
-            "name": "I კლასი",
-            "seats": null
-        },
-        {
-            "id": 84,
-            "trainId": 28,
-            "trainNumber": 812,
-            "name": "ბიზნესი",
-            "seats": null
-        }
-    ]
-} -->
+<section id="invoice">
+    <h3>Invoice</h3>
+    <p id="seat-text">Seat</p>
+    <p id="price-text">Price</p>
+    <div id="line"></div>
+    <div id="seat-and-prices">
+        <ng-container *ngFor="let item of arrayOfPassengers">
+            <div *ngIf="item.seat !== ''" class="seat-and-price">
+                <p class="seat">{{item.seat}}</p>
+                <p class="price">${{item.price}}</p>
+            </div>
+        </ng-container>
+    </div>
+    <div id="sum-div">
+        <p id="sum-text">Sum:</p>
+        <p id="sum">${{sum}}</p>
+    </div>
+    <button (click)="navigateToPayment()">Payment</button>
+</section>

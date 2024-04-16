@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TrainServiceService } from '../services/railwayApi.service';
-import { first, toArray } from 'rxjs';
 
 @Component({
   selector: 'app-passenger-information',
@@ -9,11 +8,13 @@ import { first, toArray } from 'rxjs';
   styleUrl: './passenger-information.component.scss'
 })
 export class PassengerInformationComponent implements OnInit, AfterViewInit {
-  @ViewChildren('chooseASeat', {}) chooseASeatButtons!:QueryList<ElementRef>
   constructor (
     private activatedRoute: ActivatedRoute,
     private railwayApi: TrainServiceService,
+    public router: Router
   ) { }
+  @ViewChildren('chooseASeat', {}) chooseASeatButtons!:QueryList<ElementRef>
+
 
   arrayOfPassengers:Array<any> = []
   trainId:any;
@@ -23,6 +24,8 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
   vagonsData:Array<any> = []
   chooseAWagonData:any;
   currentlyChosenWagon:any;
+  theCurrentPassenger!:number
+  sum!:number;
 
   ngOnInit(): void {
     // assign route params to variables
@@ -34,10 +37,41 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
     this.createAnArrayOfPassengers()
     // get train with it's id
     this.getTrain()
-    // get vagon ids from the train
-    this.getVagons()
-    // get trains needs be finished 
     // after getting the vagon ids get each vagon's data
+  
+    console.log(this.vagonsData)
+  }
+
+  ngAfterViewInit(): void {
+    console.log('txa')
+    this.chooseASeatButtons.changes.subscribe(data => {
+      // this if is needed because when the div is closed
+      // the function gets called but there is no chooseAWagonData
+      if (this.choosingSeats) {
+        this.chooseAWagonData = data
+        this.chooseAWagonData.first.nativeElement.style.borderBottomLeftRadius = '38%'
+        this.chooseAWagonData.first.nativeElement.style.borderTopLeftRadius = '38%'
+        this.chooseAWagonData.last.nativeElement.style.borderBottomRightRadius = '38%'
+        this.chooseAWagonData.last.nativeElement.style.borderTopRightRadius = '38%'
+        this.chooseAWagonData.first.nativeElement.style.backgroundColor = 'rgb(65, 95, 226)'
+      }
+    })
+  }
+
+
+  getTrain = () => {
+    this.railwayApi.getTrain(this.trainId).subscribe(data  => {
+      this.trainData = data
+      // get vagon ids
+      // getTrain needs to be finished to call this function
+      this.getVagons()
+    })
+  }
+
+  getVagons = () => {
+    this.trainData.vagons.forEach((item:any) => {
+      this.trainVagonIds.push(item.id)
+    });
     this.trainVagonIds.forEach(item => {
       this.railwayApi.getVagon(item).subscribe((data:any) => {
         let seatIds: Array<any> = []
@@ -49,17 +83,17 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
         
         // got this function from chatgpt, it will sort the seat numbers
         seatIds.sort((a, b) => {
-          const numA = parseInt(a[0]); // Extract the seat number part and parse it as integer
-          const numB = parseInt(b[0]); // Extract the seat number part and parse it as integer
+          const numA = parseInt(a[0]);
+          const numB = parseInt(b[0]);
           if (numA === numB) {
-            // If seat numbers are equal, compare letters
             const letterA = a[0].slice(-1);
             const letterB = b[0].slice(-1);
-            return letterA.localeCompare(letterB); // Compare letters alphabetically
+            return letterA.localeCompare(letterB);
           } else {
-            return numA - numB; // Compare seat numbers
+            return numA - numB;
           }
         });
+        this.currentlyChosenWagon = this.vagonsData[0][0];
 
         seatIds.forEach(item => {
           this.vagonsData[this.vagonsData.length - 1][0].seats.push(data[0].seats[item[1]])
@@ -70,63 +104,66 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
 
 
         console.log('taxuna')
-        // seatIds.forEach(item => {
-        //   copyOfTheSeats.forEach((item:any) => {
-            
-        //   });
-        // });
-        this.currentlyChosenWagon = this.vagonsData[0][0]
       })
-    });
-    console.log(this.vagonsData)
-  }
-
-  ngAfterViewInit(): void {
-    console.log('txa')
-    this.chooseASeatButtons.changes.subscribe(data => {
-      this.chooseAWagonData = data
-      this.chooseAWagonData.first.nativeElement.style.borderBottomLeftRadius = '38%'
-      this.chooseAWagonData.first.nativeElement.style.borderTopLeftRadius = '38%'
-      this.chooseAWagonData.last.nativeElement.style.borderBottomRightRadius = '38%'
-      this.chooseAWagonData.last.nativeElement.style.borderTopRightRadius = '38%'
-      this.currentlyChosenWagon = this.chooseAWagonData.first;
-      this.currentlyChosenWagon.nativeElement.style.backgroundColor = 'rgb(65, 95, 226)'
-    })
-  }
-
-
-  getTrain = () => {
-    this.railwayApi.getTrain(this.trainId).subscribe(data  => {
-      this.trainData = data
-      console.log(this.trainData)
-    })
-  }
-
-  getVagons = () => {
-    this.trainData.vagons.forEach((item:any) => {
-      this.trainVagonIds.push(item.id)
     });
     console.log(this.trainVagonIds)
   }
 
   createAnArrayOfPassengers = () => {
     for (let i = 0; i < this.numberOfPassengers; i++) {
-      this.arrayOfPassengers.push({
-        seats: []
-      })
+      this.arrayOfPassengers.push(
+        {
+          wagon: '',
+          seat: '',
+          price: ''
+        }
+    )
     }
   }
 
   choosingSeats:boolean = false
   // choosing seats
-  onChoosingSeats = () => {
+  onChoosingSeats = (theCurrentPassengerNumber:number) => {
     console.log(this.trainData)
     this.choosingSeats = true
+    this.currentlyChosenWagon = this.vagonsData[0][0];
+    this.theCurrentPassenger = theCurrentPassengerNumber
   }
 
   // close the choosing seats
   closeTheChoosingSeats = () => {
     this.choosingSeats = false
+    this.theCurrentPassenger = -1
+  }
+
+  // this function is called when an user clicks on a seat
+  onChoosingASeat = (e:any) => {
+    if (!(e.target.classList.value.includes('is-occupied'))) {
+      if (this.arrayOfPassengers[this.theCurrentPassenger].seat == '' || (this.arrayOfPassengers[this.theCurrentPassenger].seat !== e.target.innerText || this.arrayOfPassengers[this.theCurrentPassenger].wagon != this.currentlyChosenWagon.name)) {
+        this.arrayOfPassengers[this.theCurrentPassenger].wagon = this.currentlyChosenWagon.name
+        this.arrayOfPassengers[this.theCurrentPassenger].seat = e.target.innerText
+        console.log(this.currentlyChosenWagon.seats)
+        this.arrayOfPassengers[this.theCurrentPassenger].price = this.currentlyChosenWagon.seats.find((item:any) => {
+          return item.number == this.arrayOfPassengers[this.theCurrentPassenger].seat
+        })
+        this.arrayOfPassengers[this.theCurrentPassenger].price = this.arrayOfPassengers[this.theCurrentPassenger].price.price
+        console.log(this.arrayOfPassengers)
+        
+      } else {
+        this.arrayOfPassengers[this.theCurrentPassenger].wagon = ''
+        this.arrayOfPassengers[this.theCurrentPassenger].seat = ''
+        this.arrayOfPassengers[this.theCurrentPassenger].price = ''
+        console.log(this.arrayOfPassengers)
+      }
+      this.findTheSum()
+    }
+  }
+
+  findTheSum = () => {
+    this.sum = 0
+    this.arrayOfPassengers.forEach(item => {
+      this.sum += item.price
+    });
   }
 
   // choosing wagons
@@ -144,6 +181,11 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  // navigate to payment
+  navigateToPayment = () => {
+    this.router.navigate(['/payment'])
+  }
+
 
 
   // information about train

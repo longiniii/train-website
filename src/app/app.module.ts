@@ -16,6 +16,7 @@ import { PassengerInformationComponent } from './passenger-information/passenger
 import { CheckTicketStatusComponent } from './check-ticket-status/check-ticket-status.component';
 import { TicketDocumentComponent } from './ticket-document/ticket-document.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PassengerInformationComponent,
     CheckTicketStatusComponent,
     TicketDocumentComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
