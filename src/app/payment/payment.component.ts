@@ -25,6 +25,8 @@ export class PaymentComponent implements OnInit {
 
   bookingData:any
   passengers:Array<any> = []
+  submited:boolean = false
+  ticketData:any;
 
   // post a ticket
   onSubmit = () => {
@@ -36,13 +38,14 @@ export class PaymentComponent implements OnInit {
       'people': this.passengers
     }).subscribe({
       next: (data) => {
-        console.log(data)
+        this.checkTicketStatus(data.slice(45))
       },
       error: (error) => {
         console.log(error.error)
       }
     })
   }
+
 
   convertPassengersArray = () => {
     this.bookingData.passengers.forEach((item:any) => {
@@ -56,5 +59,13 @@ export class PaymentComponent implements OnInit {
         'payoutCompleted': true
       })
     });
+  }
+
+  checkTicketStatus = (ticketID:any) => {
+    this.railwayApi.getTicketStatus(ticketID).subscribe(data => {
+      console.log(data)
+      this.ticketData = data
+      this.submited = true
+    })
   }
 }

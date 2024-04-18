@@ -16,6 +16,9 @@ section {
     }
     form {
         margin-top: 36px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
         select,input {
             padding-left: 0.6rem;
             color: rgb(117, 117, 117);
@@ -25,13 +28,14 @@ section {
             outline: none;
         }
         select {
-            width: 12rem;
+            width: 100%;
             appearance: none;
             -webkit-appearance: none;
         }
         .custom-select {
             position: relative;
             display: inline-block;
+            width: 12rem;
             margin-right: 1rem;
             p {
                 position: absolute;
@@ -88,6 +92,54 @@ section {
     }
 }
 ::-webkit-calendar-picker-indicator {
-    padding-right: 13rem;
-    scale: 2;
+    padding-right: 38rem;
+    scale: 3;
+}
+
+@media only screen and (max-width: 1300px) {
+    section {
+        width: 60rem;
+        form {
+            .custom-select {
+                width: 11rem;
+                min-width: 10.8rem;
+            }
+            input, button {
+                width: 10rem;
+                min-width: 10rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    section {
+        height: 400px;
+        width: 98%;
+        >p {
+            text-align: center;
+        }
+        form {
+            margin-top: 0;
+            flex-flow: column wrap;
+            gap: 15px;
+            align-items: center;
+            height: 100%;
+            input, .custom-select, button {
+                margin: 0;
+                width: 38rem;
+            }
+            .custom-select {
+                select {
+                    width: 100%;
+                }
+            }
+            .custom-date-input-div {
+                margin: 0;
+            }
+            #number-of-passengers {
+                margin: 0;
+            }
+        }
+    }
 }
