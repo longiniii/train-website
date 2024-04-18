@@ -83,7 +83,19 @@ section {
                 left: 50%;
                 transform: translate(-50%,-50%);
                 right: auto;
-                width: 30rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    section {
+        height: 500px;
+        >div {
+            #information {
+                width: 26rem;
+                left: 4.5%;
+                transform: translate(0,-50%);
             }
         }
     }

@@ -23,11 +23,11 @@ section {
             padding-left: 0.6rem;
             color: rgb(117, 117, 117);
             border: 1px solid rgba(0, 0, 0, 0.2);
-            height: 48px;
             font-size: 0.85rem;
             outline: none;
         }
         select {
+            height: 100%;
             width: 100%;
             appearance: none;
             -webkit-appearance: none;
@@ -36,6 +36,7 @@ section {
             position: relative;
             display: inline-block;
             width: 12rem;
+            height: 48px;
             margin-right: 1rem;
             p {
                 position: absolute;
@@ -53,6 +54,7 @@ section {
         }
         input {
             width: 13rem;
+            height: 48px;
         }
         #number-of-passengers {
             margin-right: 1rem;
@@ -131,7 +133,7 @@ section {
             height: 100%;
             input, .custom-select, button {
                 margin: 0;
-                width: 38rem;
+                width: 37.5rem;
             }
             .custom-select {
                 select {
@@ -143,6 +145,21 @@ section {
             }
             #number-of-passengers {
                 margin: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    section {
+        left: 4.5%;
+        transform: translate(0,50%);
+        height: 350px;
+        width: 27rem;
+        form {
+            .custom-select,input,button {
+                height: 38px;
+                width: 23.5rem;
             }
         }
     }
