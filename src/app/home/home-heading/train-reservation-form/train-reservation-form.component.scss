@@ -115,11 +115,15 @@ section {
 @media only screen and (max-width: 1100px) {
     section {
         height: 400px;
-        width: 98%;
+        width: 41rem;
         >p {
             text-align: center;
         }
         form {
+            position: absolute;
+            left: 50%;
+            top: 56%;
+            transform: translate(-50%,-50%);
             margin-top: 0;
             flex-flow: column wrap;
             gap: 15px;
