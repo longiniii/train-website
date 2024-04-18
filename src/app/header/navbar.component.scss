@@ -24,7 +24,7 @@ nav {
             margin-top: 35px;
             background-color: rgb(40, 64, 191);
             color: white;
-            font-size: large;
+            font-size: 1.1rem;
             width: 11.6rem;
             height: 48px;
             border-radius: 6px;
@@ -39,5 +39,57 @@ nav {
 @media print {
     nav {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    nav {
+        #title-div {
+            #title {
+                margin-left: 3rem;
+            }
+        }
+        #check-ticket-status-div {
+            #check-ticket-status-button {
+                margin-right: 3rem;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1024px) {
+    nav {
+        #title-div {
+            #title {
+                margin-left: 1.5rem;
+            }
+        }
+        #check-ticket-status-div {
+            #check-ticket-status-button {
+                margin-right: 1.5rem;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 768px) {
+    nav {
+        #title-div {
+            #title {
+                margin-left: 0.5rem;
+            }
+        }
+        #check-ticket-status-div {
+            #check-ticket-status-button {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 575px) {
+    nav {
+        #title-div {
+            #title {
+                width: 7rem;
+            }
+        }
     }
 }
