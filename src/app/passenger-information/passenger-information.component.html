@@ -17,8 +17,8 @@
     <div class="line"></div>
     <h2 id="contact">Contact</h2>
     <form id="contact-form">
-        <input placeholder="Email" type="text">
-        <input placeholder="Phone number" type="text">
+        <input name="isa" [(ngModel)]="email" placeholder="Email" type="text">
+        <input name="esa" [(ngModel)]="phone" placeholder="Phone number" type="text">
     </form>
     <h2 id="about-passengers">About passenger</h2>
     <div id="passengers">
@@ -26,9 +26,9 @@
             <h3>passenger {{i+1}}</h3>
             <div class="put-info">
                 <button>Seat: {{item.seat}}</button>
-                <input placeholder="First name" type="text">
-                <input placeholder="Last name" type="text">
-                <input placeholder="SSN" type="text">
+                <input [(ngModel)]="arrayOfPassengers[i].firstName" placeholder="First name" type="text">
+                <input [(ngModel)]="arrayOfPassengers[i].lastName" placeholder="Last name" type="text">
+                <input [(ngModel)]="arrayOfPassengers[i].SSN" placeholder="SSN" type="text">
                 <button (click)="onChoosingSeats(i)">Pick a seat</button>
             </div>
         </div>

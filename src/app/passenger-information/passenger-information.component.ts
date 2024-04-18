@@ -18,6 +18,7 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
 
   arrayOfPassengers:Array<any> = []
   trainId:any;
+  date:any
   numberOfPassengers:any;
   trainData:any;
   trainVagonIds:Array<any> = []
@@ -26,12 +27,15 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
   currentlyChosenWagon:any;
   theCurrentPassenger!:number
   sum!:number;
+  email!:string
+  phone!:any
 
   ngOnInit(): void {
     // assign route params to variables
     this.activatedRoute.paramMap.subscribe(data => {
       this.trainId = data.get('trainId')
       this.numberOfPassengers = data.get('numberOfPassengers')
+      this.date = data.get('date')
     })
     // create an array for ngFor
     this.createAnArrayOfPassengers()
@@ -115,9 +119,13 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
         {
           wagon: '',
           seat: '',
-          price: ''
+          seatId: '',
+          price: '',
+          firstName: '',
+          lastName: '',
+          SSN: '',
         }
-    )
+      )
     }
   }
 
@@ -143,10 +151,16 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
         this.arrayOfPassengers[this.theCurrentPassenger].wagon = this.currentlyChosenWagon.name
         this.arrayOfPassengers[this.theCurrentPassenger].seat = e.target.innerText
         console.log(this.currentlyChosenWagon.seats)
+        
         this.arrayOfPassengers[this.theCurrentPassenger].price = this.currentlyChosenWagon.seats.find((item:any) => {
           return item.number == this.arrayOfPassengers[this.theCurrentPassenger].seat
         })
         this.arrayOfPassengers[this.theCurrentPassenger].price = this.arrayOfPassengers[this.theCurrentPassenger].price.price
+
+        this.arrayOfPassengers[this.theCurrentPassenger].seatId = this.currentlyChosenWagon.seats.find((item:any) => {
+          return item.number == this.arrayOfPassengers[this.theCurrentPassenger].seat
+        })
+        this.arrayOfPassengers[this.theCurrentPassenger].seatId = this.arrayOfPassengers[this.theCurrentPassenger].seatId.seatId
         console.log(this.arrayOfPassengers)
         
       } else {
@@ -183,7 +197,7 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
   }
   // navigate to payment
   navigateToPayment = () => {
-    this.router.navigate(['/payment'], { state: { passengers: this.arrayOfPassengers} })
+    this.router.navigate(['/payment'], { state: { passengers: this.arrayOfPassengers, email: this.email, phone: this.phone, trainId: this.trainId, numberOfPassengers: this.numberOfPassengers, date: this.date} })
   }
 
 

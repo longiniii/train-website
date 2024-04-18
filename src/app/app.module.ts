@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeHeadingComponent } from './home/home-heading/home-heading.component';
 import { TrainReservationFormComponent } from './home/home-heading/train-reservation-form/train-reservation-form.component';
 import { AboutTrainComponent } from './home/about-train/about-train.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChooseATrainComponent } from './choose-a-train/choose-a-train.component';
 import { PassengerInformationComponent } from './passenger-information/passenger-information.component';
 import { CheckTicketStatusComponent } from './check-ticket-status/check-ticket-status.component';
@@ -38,7 +38,8 @@ import { PaymentComponent } from './payment/payment.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()

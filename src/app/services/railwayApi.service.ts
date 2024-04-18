@@ -17,7 +17,7 @@ export class TrainServiceService {
     return this.trainHttp.get(`https://railway.stepprojects.ge/api/trains/${id}`)
   }
   getVagons = () => {
-    // backend problem
+    // backends fault
   }
   getVagon = (id:any) => {
     return this.trainHttp.get(`https://railway.stepprojects.ge/api/getvagon/${id}`)
@@ -31,8 +31,8 @@ export class TrainServiceService {
   getTickets = () => {
     return this.trainHttp.get('https://railway.stepprojects.ge/api/tickets')
   }
-  postTicketRegister = () => {
-    // future
+  postTicketRegister = (body:any) => {
+    return this.trainHttp.post('https://railway.stepprojects.ge/api/tickets/register', body, {responseType: 'text'})
   }
   getTicketStatus = (id:string) => {
     return this.trainHttp.get(`https://railway.stepprojects.ge/api/tickets/checkstatus/${id}`)
