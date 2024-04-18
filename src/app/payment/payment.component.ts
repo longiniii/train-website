@@ -10,10 +10,8 @@ export class PaymentComponent {
   constructor 
   (
     public router: Router,
-    public activeRoute: ActivatedRoute
+    public activeRoute: ActivatedRoute,
   ) {
-    activeRoute.data.subscribe(data => {
-      console.log(data)
-    })
+    console.log(this.router.getCurrentNavigation()?.extras.state)
   }
 }

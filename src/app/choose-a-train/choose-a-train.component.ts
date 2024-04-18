@@ -18,11 +18,10 @@ export class ChooseATrainComponent implements OnInit {
     to:any;
     date:any;
     numberOfPassengers:any;
+    noTrains:boolean = false
   ngOnInit(): void {
     // assign activatedRoute values to variables
     this.assignActivatedRouteValues()
-    //  get trains from the api
-    this.getDeparture()
   }
 
   assignActivatedRouteValues = () => {
@@ -31,6 +30,8 @@ export class ChooseATrainComponent implements OnInit {
       this.to = data.get('to')
       this.date = data.get('date')
       this.numberOfPassengers = data.get('numberOfPassengers')
+      //  get trains from the api
+      this.getDeparture()
     })
   }
 
@@ -43,6 +44,10 @@ export class ChooseATrainComponent implements OnInit {
       next: (data:any) => {
         console.log(data)
         this.departureData = data[0]
+        console.log(this.departureData, 'txebi')
+        if (this.departureData == undefined) {
+          this.noTrains = true
+        }
       },
       error: (error) => {
         console.log(error)

@@ -183,7 +183,7 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
   }
   // navigate to payment
   navigateToPayment = () => {
-    this.router.navigate(['/payment'])
+    this.router.navigate(['/payment'], { state: { passengers: this.arrayOfPassengers} })
   }
 
 

@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'reservation/choose-a-train/:from/:to/:date/:numberOfPassengers', component:ChooseATrainComponent},
   {path: 'passenger-information/:numberOfPassengers/:trainId/:date', component:PassengerInformationComponent},
   {path: 'check-ticket-status', component:CheckTicketStatusComponent},
-  {path: 'payment', component:PaymentComponent, data:{key:'value'}},
+  {path: 'payment', component:PaymentComponent},
   {path: '**', component:PageNotFoundComponent}
 
 ];

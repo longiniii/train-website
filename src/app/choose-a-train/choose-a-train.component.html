@@ -1,5 +1,5 @@
-<h1>List of trains</h1>
-<table>
+<h1 *ngIf="!noTrains">List of trains</h1>
+<table *ngIf="!noTrains">
         <thead>
         <tr>
             <th>Name of the train</th>
@@ -28,3 +28,5 @@
         </tr>
     </tbody>
 </table>
+<h1 *ngIf="noTrains">No trains were found</h1>
+<button id="go-back" *ngIf="noTrains">Go back</button>
