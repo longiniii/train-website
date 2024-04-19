@@ -11,16 +11,16 @@
     <tbody>
         <tr *ngFor="let item of departureData?.trains">
             <td class="route">
-                <p class="time">#{{item.number}}</p>
-                <p>{{item.name}}</p>
+                <p class="time"><abbr [title]="item.number">#{{item.number}}</abbr></p>
+                <p><abbr [title]="item.name">{{item.name}}</abbr></p>
             </td>
             <td class="departure">
-                <p class="time">{{item.departure}}</p>
-                <p>{{item.from}}</p>
+                <p class="time"><abbr [title]="item.departure">{{item.departure}}</abbr></p>
+                <p><abbr [title]="item.from">{{item.from}}</abbr></p>
             </td>
             <td class="arrival">
-                <p class="time">{{item.arrive}}</p>
-                <p>{{item.to}}</p>
+                <p class="time"><abbr [title]="item.arrive">{{item.arrive}}</abbr></p>
+                <p><abbr [title]="item.to">{{item.to}}</abbr></p>
             </td>
             <td class="book">
                 <button routerLink="/passenger-information/{{numberOfPassengers}}/{{item.id}}/{{date}}">Book</button>

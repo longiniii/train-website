@@ -1,4 +1,4 @@
-import {  Component, OnInit } from '@angular/core';
+import {  Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TrainServiceService } from '../../../services/railwayApi.service';
 import { ShareDataBetweenComponentsService } from '../../../services/share-data-between-components.service';
@@ -10,14 +10,31 @@ import { ShareDataBetweenComponentsService } from '../../../services/share-data-
 })
 export class TrainReservationFormComponent implements OnInit{
 
+  @ViewChild('from')from!:ElementRef
+  @ViewChild('to')to!:ElementRef
+  @ViewChild('customSelectArrow1')customSelectArrow1!:ElementRef
+  @ViewChild('customSelectArrow2')customSelectArrow2!:ElementRef
+
   constructor (
     private railwayApi: TrainServiceService,
-    private shareData: ShareDataBetweenComponentsService
+    private shareData: ShareDataBetweenComponentsService,
+    public renderer: Renderer2
     ) {}
 
   ngOnInit(): void {
     // declare the form
     this.declareReservationForm()
+
+    this.renderer.listen('window', 'click',(e:Event)=>{
+      if (this.arrow1 && e.target != this.from.nativeElement) {
+        this.customSelectArrow1.nativeElement.style.transform = 'rotate(360deg)'
+        this.arrow1 = false
+      }
+      if (this.arrow2 && e.target != this.to.nativeElement) {
+          this.customSelectArrow2.nativeElement.style.transform = 'rotate(360deg)'
+        this.arrow2 = false
+      }
+    })
   }
 
   // get values for date input
@@ -54,7 +71,8 @@ export class TrainReservationFormComponent implements OnInit{
       }
     }
   }
-// 
+
+
   // formGroup and form submition
 
   reservationForm!: FormGroup

@@ -56,6 +56,4 @@ export class ChooseATrainComponent implements OnInit {
   })
   }
 
-
-  // change route
 }
