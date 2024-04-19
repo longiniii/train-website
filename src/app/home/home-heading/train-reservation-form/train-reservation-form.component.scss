@@ -164,3 +164,18 @@ section {
         }
     }
 }
+@media only screen and (max-width: 425px) {
+    section {
+        left: 50%;
+        transform: translate(-50%,50%);
+        height: 300px;
+        width: 26rem;
+        form {
+            margin-top: 7px;
+            .custom-select,input,button {
+                height: 32px;
+                width: 22rem;
+            }
+        }
+    }
+}

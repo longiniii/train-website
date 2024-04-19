@@ -7,6 +7,7 @@ section {
         height: 100px;
         top: 50px;
         left: 10%;
+        padding-right: 2.4rem;
         h1 {
             letter-spacing: 1px;
             padding-bottom: 8px;
@@ -18,10 +19,26 @@ section {
     }
 }
 
+@media only screen and (max-width: 1100px) {
+    section {
+        height: 440px;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     section {
+        height: 370px;
         div {
             left: 4.5%;
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    section {
+        height: 310px;
+        div {
+            left: 3.2%;
         }
     }
 }

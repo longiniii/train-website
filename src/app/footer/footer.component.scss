@@ -23,3 +23,18 @@ footer {
         display: none;
     }
 }
+@media only screen and (max-width: 768px) {
+    footer {
+        height: 170px;
+    }
+}
+@media only screen and (max-width: 425px) {
+    footer {
+        height: 145px;
+        div {
+            p {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}

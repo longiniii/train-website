@@ -96,6 +96,31 @@ section {
                 width: 26rem;
                 left: 4.5%;
                 transform: translate(0,-50%);
+                #sub-infoes {
+                    div {
+                        p {
+                            left: 3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    section {
+        >div {
+            #information {
+                width: 24.5rem;
+                left: 3.2%;
+                #sub-infoes {
+                    div {
+                        p {
+                            left: 3.4rem;
+                        }
+                    }
+                }
             }
         }
     }
