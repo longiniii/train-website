@@ -4,9 +4,9 @@
     margin-bottom: 50px;
     border-radius: 12px;
     margin-left: 7rem;
-    width: 55rem;
+    width: 63%;
     box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.15);
-    padding: 40px;
+    padding: 35px;
     background-color: white;
     #passenger-data {
         margin-top: 46px;
@@ -59,14 +59,14 @@
     }
     #passengers {
         margin-top: 30px;
-        height: 200px;
-        overflow-y: scroll;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        &::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
+        min-height: 150px;
+        // overflow-y: scroll;
+        // scrollbar-width: none;
+        // -ms-overflow-style: none;
+        // &::-webkit-scrollbar {
+        //     width: 0;
+        //     height: 0;
+        // }
         .passenger {
             height: 100px;
             .put-info {
@@ -126,9 +126,11 @@
                 flex: 3;
                 position: relative;
                 h4 {
+                    margin-right: 0.4rem;
                     margin-top: 6px;
                 }
                 p {
+                    margin-right: 0.4rem;
                     font-size: 0.8rem;
                 }
                 .item-description {
@@ -308,9 +310,8 @@
 #invoice {
     float: inline-end;
     margin-top: 50px;
-    margin-right: 5%;
+    margin-right: 4%;
     width: 16rem;
-    // height: 350px;
     background-color: rgb(239, 241, 255);
     padding: 20px;
     position: relative;
@@ -403,3 +404,68 @@
         background-color: yellow !important;
     }
 }
+
+
+@media only screen and (max-width: 1425px) {
+    #enter-information-section {
+        width: 63%;
+    }
+    #invoice {
+        width: 14rem;
+        margin-right: 5%;
+        #seat-and-prices {
+            min-height: 60px;
+        }
+    }
+}
+@media only screen and (max-width: 1300px) {
+    #enter-information-section {
+        margin-left: 3rem;
+        width: 65%;
+        #contact-form {
+            height: 43px;
+        }
+        #passengers {
+            .passenger {
+                .put-info {
+                    height: 66px;
+                }
+            }
+        }
+        #about-train {
+            #each-info {
+                .info-div {
+                    h4 {
+                        margin-left: 0.3rem;
+                    }
+                    p {
+                        margin-left: 0.3rem;
+                    }
+                }
+            }
+        }
+    }
+    #invoice {
+        width: 13rem;
+        margin-right: 3rem;
+        padding: 12px;
+    }
+}
+// @media only screen and (max-width: 1100px) {
+//     #enter-information-section {
+//         width: calc(100vw - 3rem - 3rem) !important;
+//     }
+//     #invoice {
+//         float: none;
+//         margin-left: 3rem;
+//         margin-right: 0;
+//         display: inline-block;
+//         width: calc(100vw - 3rem - 3rem) !important;
+//         margin-top: 30px;
+//         margin-bottom: 30px;
+//         width: 100%;
+//         #seat-and-prices {
+//             min-height: 150px;
+//         }
+//     }
+// }
