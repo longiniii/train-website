@@ -80,6 +80,7 @@
                     border: 1px solid rgba(0, 0, 0, 0.3);
                     padding-left: 0.8rem;
                     border-radius: 3px;
+                    font-size: 0.9rem;
                 }
                 button {
                     display: inline-block;
@@ -103,7 +104,7 @@
         margin-top: 15px;
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
         #each-info {
             height: 105px;
             display: flex;
@@ -123,13 +124,15 @@
                 }
             }
             .info-div {
-                flex: 3;
+                flex: 4;
                 position: relative;
                 h4 {
+                    margin-left: 0.3rem;
                     margin-right: 0.4rem;
                     margin-top: 6px;
                 }
                 p {
+                    margin-left: 0.3rem;
                     margin-right: 0.4rem;
                     font-size: 0.8rem;
                 }
@@ -388,11 +391,11 @@
 }
 
 #information-section {
-    // display: none;
+    display: none;
     margin-top: 30px;
     float: inline-end;
     margin-right: 3rem;
-    width: calc(45vw);
+    width: calc(45vw + 1rem);
     h2 {
         padding-bottom: 15px;
     }
@@ -474,31 +477,66 @@
         display: inline-block;
         margin-top: 30px;
         margin-bottom: 30px;
-        width: calc(45vw - 6rem);
+        width: calc(45vw - 7rem);
         padding: 20px;
         #seat-and-prices {
             min-height: 90px;
         }
     }
+    #information-section {
+        display: inline-block;
+    }
 }
 
 
-// @media only screen and (max-width: 768px) {
-//     #enter-information-section {
-//         margin-left: 3rem;
-//         width: calc(100vw - 3rem - 3rem) !important;
-//     }
-//     #invoice {
-//         float: none;
-//         margin-left: 3rem;
-//         margin-right: 0;
-//         display: inline-block;
-//         margin-top: 30px;
-//         margin-bottom: 30px;
-//         width: calc(45vw - 6rem);
-//         padding: 20px;
-//         #seat-and-prices {
-//             min-height: 90px;
-//         }
-//     }
-// }
+@media only screen and (max-width: 768px) {
+    #enter-information-section {
+        margin-left: 0.8rem;
+        width: calc(100vw - 0.8rem - 0.8rem) !important;
+        padding: 18px;
+        #passenger-data {
+            div {
+                p {
+                    margin-left: 10px;
+                }
+            }
+        }
+        #passengers {
+            .passenger {
+                .put-info {
+                    input {
+                        padding-left: 0.6%;
+                        width: 20%;
+                    }
+                    button {
+                        width: 20%;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+    #invoice {
+        float: none;
+        margin-left: 0.8rem;
+        margin-right: 0;
+        display: inline-block;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: calc(45vw - 0.8rem);
+        padding: 20px;
+        #seat-and-prices {
+            min-height: 90px;
+        }
+        button {
+            width: 90%;
+        }
+    }
+    #information-section {
+        margin-right: 0.8rem;
+        width: calc(45vw);
+    }
+}
+@media only screen and (max-width: 500px) {
+
+}
