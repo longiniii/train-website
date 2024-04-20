@@ -387,6 +387,17 @@
     }
 }
 
+#information-section {
+    // display: none;
+    margin-top: 30px;
+    float: inline-end;
+    margin-right: 3rem;
+    width: calc(45vw);
+    h2 {
+        padding-bottom: 15px;
+    }
+}
+
 .is-occupied {
     background-color: red !important;
     cursor: default;
@@ -421,7 +432,7 @@
 @media only screen and (max-width: 1300px) {
     #enter-information-section {
         margin-left: 3rem;
-        width: 65%;
+        width: 63%;
         #contact-form {
             height: 43px;
         }
@@ -451,8 +462,30 @@
         padding: 12px;
     }
 }
-// @media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1024px) {
+    #enter-information-section {
+        margin-left: 3rem;
+        width: calc(100vw - 3rem - 3rem) !important;
+    }
+    #invoice {
+        float: none;
+        margin-left: 3rem;
+        margin-right: 0;
+        display: inline-block;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: calc(45vw - 6rem);
+        padding: 20px;
+        #seat-and-prices {
+            min-height: 90px;
+        }
+    }
+}
+
+
+// @media only screen and (max-width: 768px) {
 //     #enter-information-section {
+//         margin-left: 3rem;
 //         width: calc(100vw - 3rem - 3rem) !important;
 //     }
 //     #invoice {
@@ -460,12 +493,12 @@
 //         margin-left: 3rem;
 //         margin-right: 0;
 //         display: inline-block;
-//         width: calc(100vw - 3rem - 3rem) !important;
 //         margin-top: 30px;
 //         margin-bottom: 30px;
-//         width: 100%;
+//         width: calc(45vw - 6rem);
+//         padding: 20px;
 //         #seat-and-prices {
-//             min-height: 150px;
+//             min-height: 90px;
 //         }
 //     }
 // }
