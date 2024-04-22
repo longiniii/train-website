@@ -120,8 +120,10 @@ table {
 }
 @media only screen and (max-width: 768px) {
     table {
-        width: 96%;
+        width: 100%;
         thead {
+            border-left: none;
+            border-right: none;
             tr {
                 height: 45px;
             }

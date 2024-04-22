@@ -25,17 +25,17 @@
         <div class="passenger" *ngFor="let item of arrayOfPassengers, let i = index">
             <h3>passenger {{i+1}}</h3>
             <div class="put-info">
-                <button>Seat: {{item.seat}}</button>
+                <button id="seat">Seat: {{item.seat}}</button>
                 <input [(ngModel)]="arrayOfPassengers[i].firstName" placeholder="First name" type="text">
                 <input [(ngModel)]="arrayOfPassengers[i].lastName" placeholder="Last name" type="text">
                 <input [(ngModel)]="arrayOfPassengers[i].SSN" placeholder="SSN" type="text">
-                <button (click)="onChoosingSeats(i)">Pick a seat</button>
+                <button id="pick-a-seat" (click)="onChoosingSeats(i)">Pick a seat</button>
             </div>
         </div>
     </div>
     <div id="about-train">
         <!-- get info from an object -->
-        <div id="each-info" *ngFor="let item of trainInfoArrayOfObjects">
+        <div class="each-info" *ngFor="let item of trainInfoArrayOfObjects">
             <div class="image-main-div">
                 <div class="image-div">
                     <img [src]="item.image" alt="">
@@ -51,6 +51,7 @@
     </div>
     <div class="line"></div>
 </section>
+
 <div *ngIf="choosingSeats" id="background-for-choosing-a-seat">
     <div id="choose-a-seat-and-a-wagon">
         <div id="choose-a-seat-main-div">
@@ -95,6 +96,7 @@
         </div>
     </div>
 </div>
+
 <section id="invoice">
     <h3>Invoice</h3>
     <p id="seat-text">Seat</p>

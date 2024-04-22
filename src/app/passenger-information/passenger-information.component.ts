@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TrainServiceService } from '../services/railwayApi.service';
 
@@ -13,6 +13,7 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
     private railwayApi: TrainServiceService,
     public router: Router
   ) { }
+  @ViewChild('rails')rails!:ElementRef
   @ViewChildren('chooseASeat', {}) chooseASeatButtons!:QueryList<ElementRef>
 
 
@@ -146,6 +147,7 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
 
   // this function is called when an user clicks on a seat
   onChoosingASeat = (e:any) => {
+    console.log(this.rails,'oeeeeeeee')
     if (!(e.target.classList.value.includes('is-occupied'))) {
       if (this.arrayOfPassengers[this.theCurrentPassenger].seat == '' || (this.arrayOfPassengers[this.theCurrentPassenger].seat !== e.target.innerText || this.arrayOfPassengers[this.theCurrentPassenger].wagon != this.currentlyChosenWagon.name)) {
         this.arrayOfPassengers[this.theCurrentPassenger].wagon = this.currentlyChosenWagon.name

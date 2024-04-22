@@ -8,6 +8,9 @@
     box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.15);
     padding: 35px;
     background-color: white;
+    h3 {
+        font-size: 1.5rem;
+    }
     #passenger-data {
         margin-top: 46px;
         background-color: rgb(241, 242, 255);
@@ -105,7 +108,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-        #each-info {
+        .each-info {
             height: 105px;
             display: flex;
             flex-flow: row wrap;
@@ -165,7 +168,7 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
-        width: 490px;
+        width: 28rem;
         height: 650px;
         box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.3);
         background-color: rgb(245, 241, 241);
@@ -173,6 +176,7 @@
         z-index: 998;
         display: flex;
         flex-flow: row wrap;
+        overflow-y: auto; 
         #choose-a-seat-main-div {
             flex: 7;
             padding-top: 15px;
@@ -259,12 +263,20 @@
             padding-top: 25px;
             padding-bottom: 25px;
             display: flex;
-            flex-flow: column wrap;
+            flex-flow: column nowrap;
             justify-content: center;
             align-items: center;
             gap: 80px;
             position: relative;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }            
             button {
+                flex-shrink: 0;
                 height: 35px;
                 width: 100px;
                 rotate: 90deg;
@@ -447,7 +459,7 @@
             }
         }
         #about-train {
-            #each-info {
+            .each-info {
                 .info-div {
                     h4 {
                         margin-left: 0.3rem;
@@ -465,6 +477,7 @@
         padding: 12px;
     }
 }
+
 @media only screen and (max-width: 1024px) {
     #enter-information-section {
         margin-left: 3rem;
@@ -491,10 +504,13 @@
 
 @media only screen and (max-width: 768px) {
     #enter-information-section {
-        margin-left: 0.8rem;
-        width: calc(100vw - 0.8rem - 0.8rem) !important;
-        padding: 18px;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100% !important;
+        box-shadow: none;
+        padding: 13px;
         #passenger-data {
+            margin-top: 30px;
             div {
                 p {
                     margin-left: 10px;
@@ -532,11 +548,111 @@
             width: 90%;
         }
     }
+    #about-train {
+        .each-info {
+            height: 90px !important;
+        }
+    }
     #information-section {
         margin-right: 0.8rem;
         width: calc(45vw);
     }
 }
-@media only screen and (max-width: 500px) {
-
+@media only screen and (max-width: 425px) {
+    #enter-information-section {
+        padding: 10px;
+        margin-top: 0px !important;
+        #passenger-data {
+            margin-top: 20px;
+        }
+        #contact-form {
+            input {
+                height: 32px;
+            }
+        }
+        #passengers {
+            .passenger {
+                height: 75px;
+                .put-info {
+                    height: 56px;
+                    #seat {
+                        width: 16% !important;
+                    }
+                    #pick-a-seat {
+                        width: 21%;
+                    }
+                    input {
+                        width: 21%;
+                    }
+                }
+            }
+        }
+    }
+    #invoice {
+        margin-top: 0px;
+        width: 84% !important;
+        margin-right: 8%;
+        margin-left: 8%;
+        h3 {
+            font-size: 1.4rem;
+        }
+        button {
+            font-size: 1.3rem;
+        }
+    }
+    #about-train {
+        .each-info {
+            height: 72px !important;
+        }
+    }
+    #information-section {
+        display: none;
+    }
+    #background-for-choosing-a-seat {
+        #choose-a-seat-and-a-wagon {
+            width: 320px;
+            flex-flow: column wrap;
+            #choose-a-seat-main-div {
+                flex: 5;
+                padding-bottom: 0;
+                #colors {
+                    >div {
+                        p {
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+                #choose-a-seat-div {
+                    #the-vagon {
+                        width: 20rem;
+                        height: 440px;
+                        left: 50%;
+                    }
+                }
+            }
+            #choose-a-wagon-div {
+                overflow-y: hidden;
+                overflow-x: scroll;
+                padding-left: 10px;
+                padding-right: 10px;
+                width: 100%;
+                padding-top: 0;
+                padding-bottom: 0;
+                flex: 1;
+                flex-flow: row nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 25px;
+                button {
+                    width: 100px;
+                    rotate: 0deg;
+                }
+                #rails {
+                    height: 0.15rem;
+                    overflow: hidden;
+                    width: 420px; // ch
+                }
+            }
+        }
+    }
 }
