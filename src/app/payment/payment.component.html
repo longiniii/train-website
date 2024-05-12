@@ -1,4 +1,4 @@
 <section *ngIf="!submited">
-    <button (click)="onSubmit()">submit</button>
+    <button (click)="onSubmit()">Pay</button>
 </section>
 <app-ticket-document *ngIf="submited" [ticketData]="ticketData" [ticketIsPaidFor]="true"></app-ticket-document>

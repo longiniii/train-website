@@ -42,15 +42,12 @@ export class ChooseATrainComponent implements OnInit {
     this.railwayApi.getDeparture(this.from, this.to, this.date)
     .subscribe({
       next: (data:any) => {
-        console.log(data)
         this.departureData = data[0]
-        console.log(this.departureData, 'txebi')
         if (this.departureData == undefined) {
           this.noTrains = true
         }
       },
       error: (error) => {
-        console.log(error)
         alert(`an error (${error.status}) has occured, try again later`)
       }
   })

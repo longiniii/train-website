@@ -30,18 +30,19 @@ export class PaymentComponent implements OnInit {
 
   // post a ticket
   onSubmit = () => {
-    console.log(this.bookingData)
-    console.log(this.passengers)
     this.railwayApi.postTicketRegister({
       'trainId': this.bookingData.trainId,
       'date': this.bookingData.date,
+      
+      'email': this.bookingData.email,
+      'phoneNumber': this.bookingData.phone,
       'people': this.passengers
     }).subscribe({
       next: (data) => {
         this.checkTicketStatus(data.slice(45))
       },
       error: (error) => {
-        console.log(error.error)
+        alert(error.error)
       }
     })
   }
@@ -49,13 +50,11 @@ export class PaymentComponent implements OnInit {
 
   convertPassengersArray = () => {
     this.bookingData.passengers.forEach((item:any) => {
-      console.log(item)
       this.passengers.push({
         'seatId': item.seatId,
-        // 'name': item.firstName,
-        // 'surname': item.lastName,
-        // 'idNumber': item.SSN,
-        // 'status': true,
+        'name': item.firstName,
+        'surname': item.lastName,
+        'idNumber': item.SSN,
         'payoutCompleted': true
       })
     });
@@ -63,7 +62,6 @@ export class PaymentComponent implements OnInit {
 
   checkTicketStatus = (ticketID:any) => {
     this.railwayApi.getTicketStatus(ticketID).subscribe(data => {
-      console.log(data)
       this.ticketData = data
       this.submited = true
     })

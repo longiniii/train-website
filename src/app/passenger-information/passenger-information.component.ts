@@ -44,11 +44,9 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
     this.getTrain()
     // after getting the vagon ids get each vagon's data
   
-    console.log(this.vagonsData)
   }
 
   ngAfterViewInit(): void {
-    console.log('txa')
     this.chooseASeatButtons.changes.subscribe(data => {
       // this if is needed because when the div is closed
       // the function gets called but there is no chooseAWagonData
@@ -98,20 +96,17 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
             return numA - numB;
           }
         });
-        this.currentlyChosenWagon = this.vagonsData[0][0];
+        this.currentlyChosenWagon = this.vagonsData[0][2];
 
         seatIds.forEach(item => {
           this.vagonsData[this.vagonsData.length - 1][0].seats.push(data[0].seats[item[1]])
         });
         this.vagonsData[this.vagonsData.length - 1][0].seats.splice(0,data[0].seats.length / 2)
 
-        console.log(data[0].seats)
 
 
-        console.log('taxuna')
       })
     });
-    console.log(this.trainVagonIds)
   }
 
   createAnArrayOfPassengers = () => {
@@ -133,7 +128,6 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
   choosingSeats:boolean = false
   // choosing seats
   onChoosingSeats = (theCurrentPassengerNumber:number) => {
-    console.log(this.trainData)
     this.choosingSeats = true
     this.currentlyChosenWagon = this.vagonsData[0][0];
     this.theCurrentPassenger = theCurrentPassengerNumber
@@ -147,12 +141,10 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
 
   // this function is called when an user clicks on a seat
   onChoosingASeat = (e:any) => {
-    console.log(this.rails,'oeeeeeeee')
     if (!(e.target.classList.value.includes('is-occupied'))) {
       if (this.arrayOfPassengers[this.theCurrentPassenger].seat == '' || (this.arrayOfPassengers[this.theCurrentPassenger].seat !== e.target.innerText || this.arrayOfPassengers[this.theCurrentPassenger].wagon != this.currentlyChosenWagon.name)) {
         this.arrayOfPassengers[this.theCurrentPassenger].wagon = this.currentlyChosenWagon.name
         this.arrayOfPassengers[this.theCurrentPassenger].seat = e.target.innerText
-        console.log(this.currentlyChosenWagon.seats)
         
         this.arrayOfPassengers[this.theCurrentPassenger].price = this.currentlyChosenWagon.seats.find((item:any) => {
           return item.number == this.arrayOfPassengers[this.theCurrentPassenger].seat
@@ -163,13 +155,11 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
           return item.number == this.arrayOfPassengers[this.theCurrentPassenger].seat
         })
         this.arrayOfPassengers[this.theCurrentPassenger].seatId = this.arrayOfPassengers[this.theCurrentPassenger].seatId.seatId
-        console.log(this.arrayOfPassengers)
         
       } else {
         this.arrayOfPassengers[this.theCurrentPassenger].wagon = ''
         this.arrayOfPassengers[this.theCurrentPassenger].seat = ''
         this.arrayOfPassengers[this.theCurrentPassenger].price = ''
-        console.log(this.arrayOfPassengers)
       }
       this.findTheSum()
     }
@@ -189,11 +179,9 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
     });
     e.target.style.backgroundColor = 'rgb(65, 95, 226)';
 
-    console.log(this.vagonsData)
     this.vagonsData.forEach(item => {
       if (item[0].name == e.target.innerText) {
         this.currentlyChosenWagon = item[0]
-        console.log(this.currentlyChosenWagon)
       }
     });
   }

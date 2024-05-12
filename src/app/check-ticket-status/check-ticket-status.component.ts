@@ -15,14 +15,12 @@ export class CheckTicketStatusComponent {
   checkTicketStatus = (ticketID:any) => {
     this.railwayApi.getTicketStatus(ticketID.value).subscribe({
       next: (data) => {
-        console.log(data)
         this.ticketData = data
         this.ticketNotFound = false
         // check if the ticket is paid for
         this.checkIfTicketIsPaidFor(this.ticketData.persons)
       },
       error: (error) => {
-        console.log(error)
         this.ticketNotFound = true
       }
     })
@@ -39,7 +37,6 @@ export class CheckTicketStatusComponent {
         this.ticketIsPaidFor = true
       }      
     }
-    console.log(this.ticketIsPaidFor)
   }
 
 }

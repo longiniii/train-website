@@ -1,0 +1,17 @@
+button {
+    display: block;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 250px;
+    background-color: rgb(40, 64, 191);
+    color: white;
+    font-size: 1.1rem;
+    width: 8%;
+    height: 48px;
+    border-radius: 6px;
+    border: none;
+    &:hover {
+        transition-duration: 0.3s;
+        background-color: rgb(65, 95, 226);
+    }
+}
