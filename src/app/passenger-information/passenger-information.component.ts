@@ -187,10 +187,29 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
   }
   // navigate to payment
   navigateToPayment = () => {
-    this.router.navigate(['/payment'], { state: { passengers: this.arrayOfPassengers, email: this.email, phone: this.phone, trainId: this.trainId, numberOfPassengers: this.numberOfPassengers, date: this.date} })
+    if (this.checkIfInputsAreValid()) {
+      this.router.navigate(['/payment'], { state: { passengers: this.arrayOfPassengers, email: this.email, phone: this.phone, trainId: this.trainId, numberOfPassengers: this.numberOfPassengers, date: this.date} })
+    } else {
+      alert('The inputs are invalid!')
+    }
   }
 
-
+  checkIfInputsAreValid = () => {
+    // this function checks if the inputs are valid, in this case it checks
+    // if the inputs are not empty
+    console.log(this.arrayOfPassengers)
+    if (this.phone == '' || this.email == '') return false
+    for (let i = 0; i < this.arrayOfPassengers.length; i++) {
+      let currentObjectsEntries = Object.entries(this.arrayOfPassengers[i])
+      for (let j = 0; j < currentObjectsEntries.length; j++) {
+        if (!currentObjectsEntries[j][1]) {
+          return true
+          // return false
+        }
+      }
+    }
+    return true
+  }
 
   // information about train
   trainInfoArrayOfObjects = [
