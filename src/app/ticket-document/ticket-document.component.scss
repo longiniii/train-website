@@ -16,8 +16,8 @@
     }
     #is-paid-for-icon {
         margin: auto;
-        height: 65px;
-        width: 65px;
+        height: 3.7rem;
+        width: 3.7rem;
         border-radius: 50%;
         position: relative;
         i {
@@ -178,6 +178,9 @@
                 background-color: rgb(65, 95, 226);
             }
         }
+        #print-button-mobile {
+            display: none;
+        }
     }
 }
 
@@ -213,6 +216,87 @@
 
 @media only screen and (max-width: 1260px) {
     #about-ticket-and-the-document {
-        width: 60rem;
+        width: 54rem;
+        #about-ticket {
+            #print-button {
+                left: 93% !important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    #about-ticket-and-the-document {
+        width: 31rem;
+        box-shadow: none;
+        #about-ticket * {
+            display: none;
+        }
+        #about-ticket {
+            background-color: white;
+            height: 7rem;
+            #print-button-mobile {
+                display: block;
+                position: absolute;
+                bottom: 35px;
+                right: 35px;
+                background-color: rgb(40, 64, 191);
+                color: white;
+                font-size: large;
+                width: 11.6rem;
+                height: 48px;
+                border-radius: 6px;
+                border: none;
+                &:hover {
+                    transition-duration: 0.3s;
+                    background-color: rgb(65, 95, 226);
+                }
+            }
+            #delete-button {
+                display: block;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 468px) {
+    #about-ticket-and-the-document {
+        width: 17rem;
+        #about-ticket {
+            height: auto;
+            #delete-button {
+                position: static;
+                bottom: auto;
+                left: auto;
+                margin: auto;
+                width: 13rem;
+            }
+            #print-button-mobile {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: auto;
+                margin-top: 15px;
+                width: 13rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    #about-ticket-and-the-document {
+        margin-top: 0;
+        #about-ticket {
+            #delete-button {
+                width: 9.7rem;
+                height: 36px;
+                font-size: 1rem;
+            }
+            #print-button-mobile {
+                width: 9.7rem;
+                height: 36px;
+                font-size: 1rem;
+            }
+        }
     }
 }

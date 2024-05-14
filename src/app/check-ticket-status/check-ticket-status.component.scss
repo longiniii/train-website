@@ -8,23 +8,21 @@ section {
     }
     #check-ticket-div {
         margin-top: 6.5px;
-        position: relative;
+        display: flex;
+        flex-flow: row wrap;
+        gap: 0.5rem;
         input {
+            flex: 3;
             height: 41px;
-            width: 53rem;
             border: 1px solid rgba(0, 0, 0, 0.15);
             padding-left: 0.8rem;
         }
         button {
-            position: absolute;
-            top: 50%;
-            right: 14%;
-            transform: translate(0,-50%);
+            flex: 1;
             background-color: rgb(40, 64, 191);
             color: white;
             font-size: 1rem;
-            width: 8rem;
-            height: 37px;
+            height: 41px;
             border-top-right-radius: 6.5px;
             border-bottom-right-radius: 6.5px;
             border: none;
@@ -40,5 +38,29 @@ section {
 @media print {
     #check-ticket-section {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    section {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    section {
+        margin-bottom: 0;
+        #check-ticket-div {
+            input {
+                flex: 2;
+                height: 32px;
+            }
+            button {
+                flex: 1;
+                height: 32px;
+                font-size: 1.05rem;
+            }
+        }
     }
 }
