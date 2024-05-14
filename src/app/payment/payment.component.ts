@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TrainServiceService } from '../services/railwayApi.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-payment',
@@ -33,7 +34,6 @@ export class PaymentComponent implements OnInit {
     this.railwayApi.postTicketRegister({
       'trainId': this.bookingData.trainId,
       'date': this.bookingData.date,
-      
       'email': this.bookingData.email,
       'phoneNumber': this.bookingData.phone,
       'people': this.passengers
@@ -66,4 +66,12 @@ export class PaymentComponent implements OnInit {
       this.submited = true
     })
   }
+  
+  paymentForm = new FormGroup({
+    cardNumber: new FormControl('', Validators.required),
+    expiring: new FormControl('', Validators.required),
+    CVV: new FormControl('', Validators.required),
+    streetAdrress: new FormControl('', Validators.required),
+    country: new FormControl('GE', Validators.required)
+  })
 }

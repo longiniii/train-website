@@ -203,8 +203,7 @@ export class PassengerInformationComponent implements OnInit, AfterViewInit {
       let currentObjectsEntries = Object.entries(this.arrayOfPassengers[i])
       for (let j = 0; j < currentObjectsEntries.length; j++) {
         if (!currentObjectsEntries[j][1]) {
-          return true
-          // return false
+          return false
         }
       }
     }

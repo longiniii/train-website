@@ -1,17 +1,59 @@
-button {
-    display: block;
-    margin: auto;
-    margin-top: 100px;
-    margin-bottom: 250px;
-    background-color: rgb(40, 64, 191);
-    color: white;
-    font-size: 1.1rem;
-    width: 8%;
-    height: 48px;
-    border-radius: 6px;
-    border: none;
-    &:hover {
-        transition-duration: 0.3s;
-        background-color: rgb(65, 95, 226);
+#payment {
+    margin-top: 30px;
+    h1 {
+        text-align: center;
+    }
+    form {
+        margin: auto;
+        margin-top: 30px;
+        width: 23rem;
+        input, select {
+            margin-top: 10px;
+            height: 38px;
+            border: 1px solid rgba(0, 0, 0, 0.781);
+            border-radius: 5px;
+        }
+        .full-length {
+            width: 100%;
+            padding-left: 5px;
+        }
+        .partial-length {
+            width: 50%;
+            padding-left: 5px;
+        }
+        select {
+            color: rgb(117, 117, 117);
+        }
+        button {
+            display: block;
+            margin: auto;
+            margin-top: 21px;
+            margin-bottom: 40px;
+            background-color: rgb(40, 64, 191);
+            color: white;
+            font-size: 1.1rem;
+            width: 100%;
+            height: 47px;
+            border-radius: 6px;
+            border: none;
+            &:hover {
+                transition-duration: 0.3s;
+                background-color: rgb(65, 95, 226);
+            }
+            &:disabled {
+                background-color: rgb(140, 166, 255);
+                cursor: default;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    #payment {
+        form {
+            button {
+                font-size: 1.3rem !important;
+            }
+        }
     }
 }
